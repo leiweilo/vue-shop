@@ -65,7 +65,7 @@ export default {
 
         // 通过 result 数据可以知道比较复杂，通过解构赋值来解析出我们想要的数据,可以将上面三行中1,3两行注释接触对比下结构赋值的效果
         const { data: res } = await this.$http.post("login", this.loginForm)
-        console.log(res)
+        // console.log(res)
         if (res.meta.status !== 200) return this.$message.error('登录失败！')
         this.$message.success('登入成功')
         // 1. 将登录成功之后的 token，保存到客户端的 sessionStorage 中

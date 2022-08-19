@@ -23,3 +23,8 @@ html, body, #app {
 .el-pagination {
     margin-top: 15px;
 }
+
+/* 解决级联选择器占满全屏问题 */
+.el-cascader-panel {
+    height: 300px;
+}
