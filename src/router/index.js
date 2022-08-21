@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+// 未使用 babel 进行懒加载
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Welcome from "@/components/Welcome"
@@ -11,7 +13,62 @@ import Params from "@/components/goods/Params"
 import GoodsList from "@/components/goods/List"
 import Add from "@/components/goods/Add"
 import Order from "@/components/order/Order"
-import Report from "@/components/report/Report";
+import Report from "@/components/report/Report"
+
+
+// 使用 babel 进行懒加载，生产环境不能用，有时间查找问题
+// const Login = () => import(/* webpackChunkName: "login_home_welcome" */ './components/Login.vue')
+// const Home = () => import(/* webpackChunkName: "login_home_welcome" */ './components/Home.vue')
+// const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ './components/Welcome.vue')
+// const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ './components/user/Users.vue')
+// const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ './components/power/Rights.vue')
+// const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ './components/power/Roles.vue')
+// const Cate = () => import(/* webpackChunkName: "Cate_Params" */ './components/goods/Cate.vue')
+// const Params = () => import(/* webpackChunkName: "Cate_Params" */ './components/goods/Params.vue')
+// const GoodsList = () => import(/* webpackChunkName: "GoodsList_Add" */ './components/goods/List.vue')
+// const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ './components/goods/Add.vue')
+// const Order = () => import(/* webpackChunkName: "Order_Report" */ './components/order/Order.vue')
+// const Report = () => import(/* webpackChunkName: "Order_Report" */ './components/report/Report.vue')
+
+// const Login = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Login.vue')
+// const Home = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Home.vue')
+// const Welcome = () => import(/* webpackChunkName: "login_home_welcome" */ '@/components/Welcome.vue')
+// const Users = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/user/Users.vue')
+// const Rights = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/power/Rights.vue')
+// const Roles = () => import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/power/Roles.vue')
+// const Cate = () => import(/* webpackChunkName: "Cate_Params" */ '@/components/goods/Cate.vue')
+// const Params = () => import(/* webpackChunkName: "Cate_Params" */ '@/components/goods/Params.vue')
+// const GoodsList = () => import(/* webpackChunkName: "GoodsList_Add" */ '@/components/goods/List.vue')
+// const Add = () => import(/* webpackChunkName: "GoodsList_Add" */ '@/components/goods/Add.vue')
+// const Order = () => import(/* webpackChunkName: "Order_Report" */ '@/components/order/Order.vue')
+// const Report = () => import(/* webpackChunkName: "Order_Report" */ '@/components/report/Report.vue')
+
+
+// 使用官方推荐方法进行懒加载，在开发环境下没问题，但是打包之后，生产环境下有问题
+// const Login = () =>
+//   import(/* webpackChunkName: "login_home_welcome" */ '@/components/Login')
+// const Home = () =>
+//   import(/* webpackChunkName: "login_home_welcome" */ '@/components/Home')
+// const Welcome = () =>
+//   import(/* webpackChunkName: "login_home_welcome" */ '@/components/Welcome')
+// const Users = () =>
+//   import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/user/Users')
+// const Rights = () =>
+//   import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/power/Rights')
+// const Roles = () =>
+//   import(/* webpackChunkName: "Users_Rights_Roles" */ '@/components/power/Roles')
+// const Cate = () =>
+//   import(/* webpackChunkName: "Cate_Params" */ '@/components/goods/Cate')
+// const Params = () =>
+//   import(/* webpackChunkName: "Cate_Params" */ '@/components/goods/Params')
+// const GoodsList = () =>
+//   import(/* webpackChunkName: "GoodsList_Add" */ '@/components/goods/List')
+// const Add = () =>
+//   import(/* webpackChunkName: "GoodsList_Add" */ '@/components/goods/Add')
+// const Order = () =>
+//   import(/* webpackChunkName: "Order_Report" */ '@/components/order/Order')
+// const Report = () =>
+//   import(/* webpackChunkName: "Order_Report" */ '@/components/report/Report')
 
 Vue.use(VueRouter)
 

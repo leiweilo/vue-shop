@@ -17,18 +17,32 @@ import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
+// 导入 NProgress 包对应的JS和CSS
+// 导入 nprogress，该组件用来在每次发送 axios 请求时，在页面顶部出现蓝色的进度条，请求结束时，进度条消失
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 // 导入 axios
 import axios  from "axios"
 // 为 axios 设置一下请求根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 在请求后端接口时，后端要求在请求头上使用 Authorization 字段提供 token 令牌
 // 所以在使用 axios 之前，先设置一下拦截器
+// 在 request 拦截器中，展示进度条 NProgress.start()
 axios.interceptors.request.use(config => {
   //console.log(config)
+  NProgress.start()
   config.headers.Authorization = window.sessionStorage.getItem('token')
   // 在最后必须返回 config
   return config
 })
+
+// 在 response 拦截器中，隐藏进度条 NProgress.done()
+axios.interceptors.response.use(config => {
+  NProgress.done()
+  return config
+})
+
 Vue.prototype.$http = axios
 // 全局注册树形表格
 Vue.component('tree-table', TreeTable)
@@ -36,6 +50,8 @@ Vue.component('tree-table', TreeTable)
 Vue.use(VueQuillEditor)
 // 全局过滤器
 Vue.filter('dateFormat', function (originVal) {
+  // 因为时间是 1970 年的，我们要 * 1000 才能恢复正常
+  originVal = originVal * 1000
   const date = new Date(originVal)
   const year = date.getFullYear()
   const month = (date.getMonth() + 1 + '').padStart(2, '0')
