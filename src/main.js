@@ -10,6 +10,12 @@ import '@/assets/fonts/iconfont.css'
 // 由于饿了么没有树形表格，使用这个插件，只要在 vue ui 中的依赖项->安装依赖->运行依赖->查找 vue-table-with-tree-grid 插件安装即可
 // 安装完毕之后，点击该依赖的查看详情，看如果引入，这里我们选择了手动导入，就是第二种
 import TreeTable from 'vue-table-with-tree-grid'
+// 引入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+// require styles 引入富文本编辑器对应的样式
+import 'quill/dist/quill.core.css' // import styles
+import 'quill/dist/quill.snow.css' // for snow theme
+import 'quill/dist/quill.bubble.css' // for bubble theme
 
 // 导入 axios
 import axios  from "axios"
@@ -26,6 +32,21 @@ axios.interceptors.request.use(config => {
 Vue.prototype.$http = axios
 // 全局注册树形表格
 Vue.component('tree-table', TreeTable)
+// 全局注册富文本编辑器
+Vue.use(VueQuillEditor)
+// 全局过滤器
+Vue.filter('dateFormat', function (originVal) {
+  const date = new Date(originVal)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1 + '').padStart(2, '0')
+  const day = (date.getDate() + '').padStart(2, '0')
+
+  const hour = (date.getHours() + '').padStart(2, '0')
+  const minute = (date.getMinutes() + '').padStart(2, '0')
+  const second = (date.getSeconds() + '').padStart(2, '0')
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`
+})
 
 Vue.config.productionTip = false
 new Vue({
