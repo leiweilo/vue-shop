@@ -3,7 +3,7 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/heima.png" alt="">
+        <img class='title-img' src="../assets/heima.png" alt="">
         <span>电商后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
@@ -169,5 +169,9 @@ export default {
   // 每个文本竖线靠太近了，调整为0.2em
   letter-spacing: 0.2em;
   cursor: pointer;
+}
+
+.title-img {
+  display: none;
 }
 </style>
