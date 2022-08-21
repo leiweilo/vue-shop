@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    // 重置按鈕，重置登入表單
+    // 重置按钮，重置登入表单
     resetLoginForm () {
       this.$refs.loginFormRef.resetFields();
     },
