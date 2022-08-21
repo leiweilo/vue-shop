@@ -2,14 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
-import Welcome from "@/components/Welcome";
-import Users from "@/components/user/Users";
-import Rights from "@/components/power/Rights";
-import Roles from "@/components/power/Roles";
-import Cate from "@/components/goods/Cate";
-import Params from "@/components/goods/Params";
-import GoodsList from "@/components/goods/List";
-import Add from "@/components/goods/Add";
+import Welcome from "@/components/Welcome"
+import Users from "@/components/user/Users"
+import Rights from "@/components/power/Rights"
+import Roles from "@/components/power/Roles"
+import Cate from "@/components/goods/Cate"
+import Params from "@/components/goods/Params"
+import GoodsList from "@/components/goods/List"
+import Add from "@/components/goods/Add"
+import Order from "@/components/order/Order"
 
 Vue.use(VueRouter)
 
@@ -29,7 +30,8 @@ const router = new VueRouter({
         { path: '/categories', component:Cate },
         { path: '/params', component:Params },
         { path: '/goods', component:GoodsList },
-        { path: '/goods/add', component: Add }
+        { path: '/goods/add', component: Add },
+        { path: '/orders', component: Order}
       ]}
   ]
 })
