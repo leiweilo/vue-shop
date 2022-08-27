@@ -59,7 +59,7 @@ const router = new VueRouter({
 // 挂载路由导航守卫
 router.beforeEach((to, from, next) => {
   // to 将要访问的路径   from 代表从哪个路径跳转而来   next 是一个函数，表示放行
-  // next 有两种放行，第一种直接调用next()直接放行，第二种调用next('路径')，强制跳转到我们指定的页面 解决了路由懒加载，爆栈问题（出在路由守卫上）
+  // next 有两种放行，第一种直接调用next()直接放行，第二种调用next('路径')，强制跳转到我们指定的页面
   if (to.path === '/login') {
     next();
     return
